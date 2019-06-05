@@ -67,3 +67,7 @@ config/secrets.yml
 
 pkg/*
 Gemfile.lock
+
+# RVM
+.ruby-gemset
+.ruby-version
