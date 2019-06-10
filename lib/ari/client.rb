@@ -2,6 +2,7 @@ require 'net/http'
 require 'multi_json'
 require 'ari/request_error'
 require 'ari/server_error'
+require 'ari/thread_pool'
 require 'event_emitter'
 require 'websocket-client-simple'
 
@@ -12,7 +13,8 @@ module Ari
     attr_reader :ws
 
     DEFAULTS = {
-      :url => 'http://localhost:8088/ari'
+      :url => 'http://localhost:8088/ari',
+      :pool_size => 10
     }
 
     HTTP_HEADERS = {
@@ -24,6 +26,7 @@ module Ari
 
     def initialize(options = {})
       @options = DEFAULTS.merge options
+      @pool = ThreadPool.new @options[:pool_size]
       @uri = URI.parse @options[:url]
       raise ArgumentError.new("The :api_key needs to be specified.") unless @options[:api_key]
     end
@@ -80,11 +83,11 @@ module Ari
       event_model_ids = event_properties.map { |p| handler.send(p).id rescue nil }.compact
       [*instances].each do |instance|
         if event_model_ids.include? instance.id
-          emit "#{event_name}-#{instance.id}", handler
+          @pool.run { emit "#{event_name}-#{instance.id}", handler }
         end
       end
 
-      self.emit event_name, handler_klass.new(object.merge(client: self))
+      @pool.run { self.emit event_name, handler_klass.new(object.merge(client: self)) }
     rescue => err
       emit :websocket_error, err
     end
