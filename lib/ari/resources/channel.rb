@@ -161,7 +161,8 @@ module Ari
     # Parameters:
     #
     # channelId (required) - Channel's id
-    # reason  - Reason for hanging up the channel
+    # reason_code  - The reason code for hanging up the channel for detail use. Mutually exclusive with 'reason'. See detail hangup codes at here. https://wiki.asterisk.org/wiki/display/AST/Hangup+Cause+Mappings
+    # reason  - Reason for hanging up the channel for simple use. Mutually exclusive with 'reason_code'.
     #
     def self.hangup(options = {})
       raise ArgumentError.new("Parameter channelId must be passed in options hash.") unless options[:channelId]
@@ -718,6 +719,33 @@ module Ari
     def rtpstatistics(options = {})
       self.class.rtpstatistics(options.merge(channelId: self.id, client: @client))
     end
+
+    # POST /channels/externalMedia
+    #
+    # Create a channel to an External Media source/sink.
+    #
+    #
+    # Parameters:
+    #
+    # channelId  - The unique id to assign the channel on creation.
+    # app (required) - Stasis Application to place channel into
+    # variables  - The "variables" key in the body object holds variable key/value pairs to set on the channel on creation. Other keys in the body object are interpreted as query parameters. Ex. { "endpoint": "SIP/Alice", "variables": { "CALLERID(name)": "Alice" } }
+    # external_host (required) - Hostname/ip:port of external host
+    # encapsulation  - Payload encapsulation protocol
+    # transport  - Transport protocol
+    # connection_type  - Connection type (client/server)
+    # format (required) - Format to encode audio in
+    # direction  - External media direction
+    #
+    def self.external_media(options = {})
+      raise ArgumentError.new("Parameter app must be passed in options hash.") unless options[:app]
+      raise ArgumentError.new("Parameter external_host must be passed in options hash.") unless options[:external_host]
+      raise ArgumentError.new("Parameter format must be passed in options hash.") unless options[:format]
+      path = '/channels/externalMedia'
+      response = client(options).post(path, options)
+      Channel.new(response.merge(client: options[:client]))
+    end
+    class << self; alias_method :externalMedia, :external_media; end
 
 
   end
