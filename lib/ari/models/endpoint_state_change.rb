@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,10 @@
 
 module Ari
   class EndpointStateChange < Event
-
     attr_reader :endpoint
 
     def endpoint=(val)
       @endpoint ||= Endpoint.new(val)
     end
-
-
   end
 end

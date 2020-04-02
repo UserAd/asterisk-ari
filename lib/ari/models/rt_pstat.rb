@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class RTPstat < Model
-
     attr_reader :txcount, :rxcount, :txjitter, :rxjitter, :remote_maxjitter, :remote_minjitter, :remote_normdevjitter, :remote_stdevjitter, :local_maxjitter, :local_minjitter, :local_normdevjitter, :local_stdevjitter, :txploss, :rxploss, :remote_maxrxploss, :remote_minrxploss, :remote_normdevrxploss, :remote_stdevrxploss, :local_maxrxploss, :local_minrxploss, :local_normdevrxploss, :local_stdevrxploss, :rtt, :maxrtt, :minrtt, :normdevrtt, :stdevrtt, :local_ssrc, :remote_ssrc, :txoctetcount, :rxoctetcount, :channel_uniqueid
 
     def txjitter=(val)
@@ -105,7 +106,5 @@ module Ari
     def stdevrtt=(val)
       @stdevrtt ||= double.new(val)
     end
-
-
   end
 end

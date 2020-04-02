@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #$VERBOSE = true
 
 require 'minitest/autorun'
@@ -12,9 +14,9 @@ module PrettyJSONWithPrettyBody
   extend VCR::Cassette::EncodingErrorHandling
   def serialize(hash)
     handle_encoding_errors do
-      hash["http_interactions"].each do |interaction|
-        body_hash = MultiJson.load(interaction["response"]["body"]["string"])
-        interaction["response"]["body"]["string"] = body_hash
+      hash['http_interactions'].each do |interaction|
+        body_hash = MultiJson.load(interaction['response']['body']['string'])
+        interaction['response']['body']['string'] = body_hash
       end
       ::JSON.pretty_generate(hash)
     end
@@ -22,9 +24,9 @@ module PrettyJSONWithPrettyBody
   def deserialize(string)
     handle_encoding_errors do
       hash = MultiJson.decode(string)
-      hash["http_interactions"].each do |interaction|
-        body_string = ::JSON.pretty_generate(interaction["response"]["body"]["string"])
-        interaction["response"]["body"]["string"] = body_string
+      hash['http_interactions'].each do |interaction|
+        body_string = ::JSON.pretty_generate(interaction['response']['body']['string'])
+        interaction['response']['body']['string'] = body_string
       end
       hash
     end
@@ -32,7 +34,7 @@ module PrettyJSONWithPrettyBody
 end
 
 VCR.configure do |c|
-  c.cassette_library_dir = "test/fixtures"
+  c.cassette_library_dir = 'test/fixtures'
   c.hook_into :webmock
   c.cassette_serializers[:pretty_json_with_pretty_body] = PrettyJSONWithPrettyBody
   c.default_cassette_options = {

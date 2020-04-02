@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,11 @@
 
 module Ari
   class Sound < Resource
-
     attr_reader :id, :text, :formats
 
     def formats=(val)
       @formats ||= val.map { |v| FormatLangPair.new(v) }
     end
-
 
     # GET /sounds
     #
@@ -45,7 +45,7 @@ module Ari
     # soundId (required) - Sound's id
     #
     def self.get(options = {})
-      raise ArgumentError.new("Parameter soundId must be passed in options hash.") unless options[:soundId]
+      raise ArgumentError.new('Parameter soundId must be passed in options hash.') unless options[:soundId]
       path = '/sounds/%{soundId}' % options
       response = client(options).get(path, options)
       Sound.new(response.merge(client: options[:client]))
@@ -54,8 +54,6 @@ module Ari
     def get(options = {})
       self.class.get(options.merge(soundId: self.id, client: @client))
     end
-
-
   end
 end
 

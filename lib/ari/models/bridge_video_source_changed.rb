@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,10 @@
 
 module Ari
   class BridgeVideoSourceChanged < Event
-
     attr_reader :bridge, :old_video_source_id
 
     def bridge=(val)
       @bridge ||= Bridge.new(val)
     end
-
-
   end
 end

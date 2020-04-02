@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,6 @@
 
 module Ari
   class MissingParams < Message
-
     attr_reader :params
-
-
   end
 end

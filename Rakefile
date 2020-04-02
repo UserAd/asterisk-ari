@@ -1,16 +1,18 @@
-require "bundler/gem_tasks"
+# frozen_string_literal: true
+
+require 'bundler/gem_tasks'
 require 'open-uri'
 require 'json'
 require 'ari/generators/resource_generator'
-require "rake/testtask"
+require 'rake/testtask'
 
 task :default => :test
 
 Rake::TestTask.new do |t|
-  t.pattern = "test/**/*_test.rb"
+  t.pattern = 'test/**/*_test.rb'
 end
 
-desc "Generate resources from JSON specification"
+desc 'Generate resources from JSON specification'
 task :generate do
 
   base_url = 'https://raw.githubusercontent.com/asterisk/asterisk/master/rest-api/api-docs/%{resource_name}.json'

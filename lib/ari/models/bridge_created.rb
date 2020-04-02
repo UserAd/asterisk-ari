@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,10 @@
 
 module Ari
   class BridgeCreated < Event
-
     attr_reader :bridge
 
     def bridge=(val)
       @bridge ||= Bridge.new(val)
     end
-
-
   end
 end

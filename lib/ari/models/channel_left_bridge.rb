@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class ChannelLeftBridge < Event
-
     attr_reader :bridge, :channel
 
     def bridge=(val)
@@ -21,7 +22,5 @@ module Ari
     def channel=(val)
       @channel ||= Channel.new(val)
     end
-
-
   end
 end

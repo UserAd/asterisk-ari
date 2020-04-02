@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ari
   class ServerError < StandardError
     attr_reader :code

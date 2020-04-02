@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,6 @@
 
 module Ari
   class LogChannel < Model
-
     attr_reader :channel, :type, :status, :configuration
-
-
   end
 end

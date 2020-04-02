@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,6 @@
 
 module Ari
   class DialplanCEP < Model
-
     attr_reader :context, :exten, :priority, :app_name, :app_data
-
-
   end
 end

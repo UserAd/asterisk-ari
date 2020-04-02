@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'time'
 
 module Ari
   class Model
-
     def initialize(attributes)
       if attributes
         @client = attributes.delete(:client)
@@ -21,6 +22,5 @@ module Ari
         end
       end
     end
-
   end
 end

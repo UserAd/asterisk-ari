@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,6 @@
 
 module Ari
   class Message < Model
-
     attr_reader :type, :asterisk_id
-
-
   end
 end

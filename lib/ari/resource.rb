@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 # TODO use variable names with underscores
 module Ari
   class Resource < Model
-
     def client(options = {})
       return @client if @client
       self.class.client(options)
@@ -35,6 +36,5 @@ module Ari
       end
     end
     alias_method :off_all!, :remove_all_listeners!
-
   end
 end

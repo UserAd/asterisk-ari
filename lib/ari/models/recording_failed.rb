@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,10 @@
 
 module Ari
   class RecordingFailed < Event
-
     attr_reader :recording
 
     def recording=(val)
       @recording ||= LiveRecording.new(val)
     end
-
-
   end
 end

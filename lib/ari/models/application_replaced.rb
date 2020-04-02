@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,5 @@
 
 module Ari
   class ApplicationReplaced < Event
-
-
   end
 end

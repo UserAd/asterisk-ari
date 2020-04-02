@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'erb'
 require 'active_support'
 require 'active_support/core_ext'
@@ -11,7 +13,6 @@ require 'ari/generators/property'
 module Ari
   module Generators
     class ResourceGenerator
-
       def initialize(resource_name, specification, options = {})
         @resource_name = resource_name.underscore
         @klass_name = @resource_name.classify
@@ -88,7 +89,6 @@ module Ari
       def inherits_from
         generate_only_models? ? 'Model' : 'Resource'
       end
-
     end
   end
 end

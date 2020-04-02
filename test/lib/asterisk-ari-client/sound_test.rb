@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../test_helper'
 
 class TestSound < Minitest::Test
@@ -24,5 +26,4 @@ class TestSound < Minitest::Test
       assert_equal 'No more messages.', sounds.first.text
     end
   end
-
 end

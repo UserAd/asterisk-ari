@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class ConfigInfo < Model
-
     attr_reader :name, :default_language, :max_channels, :max_open_files, :max_load, :setid
 
     def max_load=(val)
@@ -21,7 +22,5 @@ module Ari
     def setid=(val)
       @setid ||= SetId.new(val)
     end
-
-
   end
 end

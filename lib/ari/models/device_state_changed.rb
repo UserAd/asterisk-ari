@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,10 @@
 
 module Ari
   class DeviceStateChanged < Event
-
     attr_reader :device_state
 
     def device_state=(val)
       @device_state ||= DeviceState.new(val)
     end
-
-
   end
 end

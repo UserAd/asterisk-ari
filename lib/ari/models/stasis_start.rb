@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class StasisStart < Event
-
     attr_reader :args, :channel, :replace_channel
 
     def channel=(val)
@@ -21,7 +22,5 @@ module Ari
     def replace_channel=(val)
       @replace_channel ||= Channel.new(val)
     end
-
-
   end
 end

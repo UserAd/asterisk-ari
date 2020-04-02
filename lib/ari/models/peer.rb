@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,6 @@
 
 module Ari
   class Peer < Model
-
     attr_reader :peer_status, :cause, :address, :port, :time
-
-
   end
 end

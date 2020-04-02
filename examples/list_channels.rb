@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'asterisk-ari-client'
 
 @client = Ari::Client.new(

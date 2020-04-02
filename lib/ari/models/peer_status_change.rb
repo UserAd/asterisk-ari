@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class PeerStatusChange < Event
-
     attr_reader :endpoint, :peer
 
     def endpoint=(val)
@@ -21,7 +22,5 @@ module Ari
     def peer=(val)
       @peer ||= Peer.new(val)
     end
-
-
   end
 end

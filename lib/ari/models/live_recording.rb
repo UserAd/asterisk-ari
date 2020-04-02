@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,6 @@
 
 module Ari
   class LiveRecording < Model
-
     attr_reader :name, :format, :target_uri, :state, :duration, :talking_duration, :silence_duration, :cause
-
-
   end
 end

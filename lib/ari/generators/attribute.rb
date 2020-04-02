@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Ari
   module Generators
     class Attribute
-
       def initialize(specification)
         @specification = specification
       end
@@ -29,7 +30,6 @@ module Ari
       def type
         @specification['dataType']
       end
-
     end
   end
 end

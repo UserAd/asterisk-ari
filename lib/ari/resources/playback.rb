@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,7 @@
 
 module Ari
   class Playback < Resource
-
     attr_reader :id, :media_uri, :next_media_uri, :target_uri, :language, :state
-
 
     # GET /playbacks/%{playbackId}
     #
@@ -25,7 +25,7 @@ module Ari
     # playbackId (required) - Playback's id
     #
     def self.get(options = {})
-      raise ArgumentError.new("Parameter playbackId must be passed in options hash.") unless options[:playbackId]
+      raise ArgumentError.new('Parameter playbackId must be passed in options hash.') unless options[:playbackId]
       path = '/playbacks/%{playbackId}' % options
       response = client(options).get(path, options)
       Playback.new(response.merge(client: options[:client]))
@@ -45,7 +45,7 @@ module Ari
     # playbackId (required) - Playback's id
     #
     def self.stop(options = {})
-      raise ArgumentError.new("Parameter playbackId must be passed in options hash.") unless options[:playbackId]
+      raise ArgumentError.new('Parameter playbackId must be passed in options hash.') unless options[:playbackId]
       path = '/playbacks/%{playbackId}' % options
       response = client(options).delete(path, options)
     rescue Ari::RequestError => e
@@ -67,8 +67,8 @@ module Ari
     # operation (required) - Operation to perform on the playback.
     #
     def self.control(options = {})
-      raise ArgumentError.new("Parameter playbackId must be passed in options hash.") unless options[:playbackId]
-      raise ArgumentError.new("Parameter operation must be passed in options hash.") unless options[:operation]
+      raise ArgumentError.new('Parameter playbackId must be passed in options hash.') unless options[:playbackId]
+      raise ArgumentError.new('Parameter operation must be passed in options hash.') unless options[:operation]
       path = '/playbacks/%{playbackId}/control' % options
       response = client(options).post(path, options)
     end
@@ -76,8 +76,6 @@ module Ari
     def control(options = {})
       self.class.control(options.merge(playbackId: self.id, client: @client))
     end
-
-
   end
 end
 

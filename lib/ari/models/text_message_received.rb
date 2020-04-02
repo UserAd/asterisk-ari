@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class TextMessageReceived < Event
-
     attr_reader :message, :endpoint
 
     def message=(val)
@@ -21,7 +22,5 @@ module Ari
     def endpoint=(val)
       @endpoint ||= Endpoint.new(val)
     end
-
-
   end
 end

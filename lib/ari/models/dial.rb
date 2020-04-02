@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class Dial < Event
-
     attr_reader :caller, :peer, :forward, :forwarded, :dialstring, :dialstatus
 
     def caller=(val)
@@ -25,7 +26,5 @@ module Ari
     def forwarded=(val)
       @forwarded ||= Channel.new(val)
     end
-
-
   end
 end

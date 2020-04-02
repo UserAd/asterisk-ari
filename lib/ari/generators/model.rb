@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Ari
   module Generators
     class Model
-
       def initialize(klass_name, resource, specification)
         @klass_name = klass_name
         @resource = resource
@@ -32,7 +33,6 @@ module Ari
         inherits_from_model = @resource.models.detect { |m| m.sub_types.include?(klass_name) }
         inherits_from_model ? inherits_from_model.klass_name : 'Model'
       end
-
     end
   end
 end

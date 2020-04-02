@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,7 @@
 
 module Ari
   class Endpoint < Resource
-
     attr_reader :technology, :resource, :state, :channel_ids
-
 
     # GET /endpoints
     #
@@ -39,8 +39,8 @@ module Ari
     # variables  - 
     #
     def self.send_message(options = {})
-      raise ArgumentError.new("Parameter to must be passed in options hash.") unless options[:to]
-      raise ArgumentError.new("Parameter from must be passed in options hash.") unless options[:from]
+      raise ArgumentError.new('Parameter to must be passed in options hash.') unless options[:to]
+      raise ArgumentError.new('Parameter from must be passed in options hash.') unless options[:from]
       path = '/endpoints/sendMessage'
       response = client(options).put(path, options)
     end
@@ -56,7 +56,7 @@ module Ari
     # tech (required) - Technology of the endpoints (sip,iax2,...)
     #
     def self.list_by_tech(options = {})
-      raise ArgumentError.new("Parameter tech must be passed in options hash.") unless options[:tech]
+      raise ArgumentError.new('Parameter tech must be passed in options hash.') unless options[:tech]
       path = '/endpoints/%{tech}' % options
       response = client(options).get(path, options)
       response.map { |hash| Endpoint.new(hash.merge(client: options[:client])) }
@@ -78,8 +78,8 @@ module Ari
     # resource (required) - ID of the endpoint
     #
     def self.get(options = {})
-      raise ArgumentError.new("Parameter tech must be passed in options hash.") unless options[:tech]
-      raise ArgumentError.new("Parameter resource must be passed in options hash.") unless options[:resource]
+      raise ArgumentError.new('Parameter tech must be passed in options hash.') unless options[:tech]
+      raise ArgumentError.new('Parameter resource must be passed in options hash.') unless options[:resource]
       path = '/endpoints/%{tech}/%{resource}' % options
       response = client(options).get(path, options)
       Endpoint.new(response.merge(client: options[:client]))
@@ -103,9 +103,9 @@ module Ari
     # variables  - 
     #
     def self.send_message_to_endpoint(options = {})
-      raise ArgumentError.new("Parameter tech must be passed in options hash.") unless options[:tech]
-      raise ArgumentError.new("Parameter resource must be passed in options hash.") unless options[:resource]
-      raise ArgumentError.new("Parameter from must be passed in options hash.") unless options[:from]
+      raise ArgumentError.new('Parameter tech must be passed in options hash.') unless options[:tech]
+      raise ArgumentError.new('Parameter resource must be passed in options hash.') unless options[:resource]
+      raise ArgumentError.new('Parameter from must be passed in options hash.') unless options[:from]
       path = '/endpoints/%{tech}/%{resource}/sendMessage' % options
       response = client(options).put(path, options)
     end
@@ -114,8 +114,6 @@ module Ari
     def send_message_to_endpoint(options = {})
       self.class.send_message_to_endpoint(options.merge(endpointId: self.id, client: @client))
     end
-
-
   end
 end
 

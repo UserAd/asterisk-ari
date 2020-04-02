@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class ContactStatusChange < Event
-
     attr_reader :endpoint, :contact_info
 
     def endpoint=(val)
@@ -21,7 +22,5 @@ module Ari
     def contact_info=(val)
       @contact_info ||= ContactInfo.new(val)
     end
-
-
   end
 end

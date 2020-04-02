@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,10 @@
 
 module Ari
   class TextMessage < Model
-
     attr_reader :from, :to, :body, :variables
 
     def variables=(val)
-      @variables ||= val.map { |v| TextMessageVariable.new(v) }
+      @variables ||= object.new(val)
     end
-
-
   end
 end

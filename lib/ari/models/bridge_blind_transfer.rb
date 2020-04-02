@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class BridgeBlindTransfer < Event
-
     attr_reader :channel, :replace_channel, :transferee, :exten, :context, :result, :is_external, :bridge
 
     def channel=(val)
@@ -29,7 +30,5 @@ module Ari
     def bridge=(val)
       @bridge ||= Bridge.new(val)
     end
-
-
   end
 end

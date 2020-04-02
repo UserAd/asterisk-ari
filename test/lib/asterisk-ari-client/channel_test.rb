@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../test_helper'
 
 class TestChannel < Minitest::Test
@@ -73,5 +75,4 @@ class TestChannel < Minitest::Test
       assert_equal 'my_value', channel_var.value
     end
   end
-
 end

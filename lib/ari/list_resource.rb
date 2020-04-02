@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Ari
   class ListResource
-
     def initialize(client, resource_klass)
       @client = client
       @resource_klass = resource_klass
@@ -18,6 +19,5 @@ module Ari
         super
       end
     end
-
   end
 end

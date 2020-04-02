@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,7 @@
 
 module Ari
   class DeviceState < Resource
-
     attr_reader :name, :state
-
 
     # GET /deviceStates
     #
@@ -36,7 +36,7 @@ module Ari
     # deviceName (required) - Name of the device
     #
     def self.get(options = {})
-      raise ArgumentError.new("Parameter deviceName must be passed in options hash.") unless options[:deviceName]
+      raise ArgumentError.new('Parameter deviceName must be passed in options hash.') unless options[:deviceName]
       path = '/deviceStates/%{deviceName}' % options
       response = client(options).get(path, options)
       DeviceState.new(response.merge(client: options[:client]))
@@ -58,8 +58,8 @@ module Ari
     # deviceState (required) - Device state value
     #
     def self.update(options = {})
-      raise ArgumentError.new("Parameter deviceName must be passed in options hash.") unless options[:deviceName]
-      raise ArgumentError.new("Parameter deviceState must be passed in options hash.") unless options[:deviceState]
+      raise ArgumentError.new('Parameter deviceName must be passed in options hash.') unless options[:deviceName]
+      raise ArgumentError.new('Parameter deviceState must be passed in options hash.') unless options[:deviceState]
       path = '/deviceStates/%{deviceName}' % options
       response = client(options).put(path, options)
     end
@@ -78,7 +78,7 @@ module Ari
     # deviceName (required) - Name of the device
     #
     def self.delete(options = {})
-      raise ArgumentError.new("Parameter deviceName must be passed in options hash.") unless options[:deviceName]
+      raise ArgumentError.new('Parameter deviceName must be passed in options hash.') unless options[:deviceName]
       path = '/deviceStates/%{deviceName}' % options
       response = client(options).delete(path, options)
     rescue Ari::RequestError => e
@@ -88,8 +88,6 @@ module Ari
     def delete(options = {})
       self.class.delete(options.merge(deviceStateId: self.id, client: @client))
     end
-
-
   end
 end
 

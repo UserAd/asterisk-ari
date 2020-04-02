@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class AsteriskInfo < Model
-
     attr_reader :build, :system, :config, :status
 
     def build=(val)
@@ -29,7 +30,5 @@ module Ari
     def status=(val)
       @status ||= StatusInfo.new(val)
     end
-
-
   end
 end

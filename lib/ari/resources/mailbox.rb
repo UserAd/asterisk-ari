@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,7 @@
 
 module Ari
   class Mailbox < Resource
-
     attr_reader :name, :old_messages, :new_messages
-
 
     # GET /mailboxes
     #
@@ -36,7 +36,7 @@ module Ari
     # mailboxName (required) - Name of the mailbox
     #
     def self.get(options = {})
-      raise ArgumentError.new("Parameter mailboxName must be passed in options hash.") unless options[:mailboxName]
+      raise ArgumentError.new('Parameter mailboxName must be passed in options hash.') unless options[:mailboxName]
       path = '/mailboxes/%{mailboxName}' % options
       response = client(options).get(path, options)
       Mailbox.new(response.merge(client: options[:client]))
@@ -58,9 +58,9 @@ module Ari
     # newMessages (required) - Count of new messages in the mailbox
     #
     def self.update(options = {})
-      raise ArgumentError.new("Parameter mailboxName must be passed in options hash.") unless options[:mailboxName]
-      raise ArgumentError.new("Parameter oldMessages must be passed in options hash.") unless options[:oldMessages]
-      raise ArgumentError.new("Parameter newMessages must be passed in options hash.") unless options[:newMessages]
+      raise ArgumentError.new('Parameter mailboxName must be passed in options hash.') unless options[:mailboxName]
+      raise ArgumentError.new('Parameter oldMessages must be passed in options hash.') unless options[:oldMessages]
+      raise ArgumentError.new('Parameter newMessages must be passed in options hash.') unless options[:newMessages]
       path = '/mailboxes/%{mailboxName}' % options
       response = client(options).put(path, options)
     end
@@ -79,7 +79,7 @@ module Ari
     # mailboxName (required) - Name of the mailbox
     #
     def self.delete(options = {})
-      raise ArgumentError.new("Parameter mailboxName must be passed in options hash.") unless options[:mailboxName]
+      raise ArgumentError.new('Parameter mailboxName must be passed in options hash.') unless options[:mailboxName]
       path = '/mailboxes/%{mailboxName}' % options
       response = client(options).delete(path, options)
     rescue Ari::RequestError => e
@@ -89,8 +89,6 @@ module Ari
     def delete(options = {})
       self.class.delete(options.merge(mailboxId: self.id, client: @client))
     end
-
-
   end
 end
 

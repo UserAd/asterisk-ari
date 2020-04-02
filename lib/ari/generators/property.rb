@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Ari
   module Generators
     class Property
-
       def initialize(name, specification)
         @name = name
         @specification = specification
@@ -30,7 +31,6 @@ module Ari
       def description
         @specification['description']
       end
-
     end
   end
 end

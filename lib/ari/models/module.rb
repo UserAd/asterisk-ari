@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,9 +13,6 @@
 
 module Ari
   class Module < Model
-
     attr_reader :name, :description, :use_count, :status, :support_level
-
-
   end
 end

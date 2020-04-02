@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,10 @@
 
 module Ari
   class ChannelHold < Event
-
     attr_reader :channel, :musicclass
 
     def channel=(val)
       @channel ||= Channel.new(val)
     end
-
-
   end
 end

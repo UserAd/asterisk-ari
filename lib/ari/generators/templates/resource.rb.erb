@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -29,15 +31,16 @@ module Ari
         end
       end
     end -%>
+
     def <%= attribute.name %>=(val)
       @<%= attribute.name %> ||= <%= attribute_value %>
     end
 
     <%- end -%>
     <%- end -%>
-
     <%- apis.each do |api| -%>
     <%- api.operations.each do |operation| -%>
+
     # <%= operation.http_method %> <%= api.path %>
     #
     # <%= api.description %>
@@ -56,7 +59,7 @@ module Ari
     def self.<%= operation.method_name %>(options = {})
       <%- operation.parameters.each do |parameter| -%>
       <%- next unless parameter.required? -%>
-      raise ArgumentError.new("Parameter <%= parameter.name %> must be passed in options hash.") unless options[:<%= parameter.name %>]
+      raise ArgumentError.new('Parameter <%= parameter.name %> must be passed in options hash.') unless options[:<%= parameter.name %>]
       <%- end -%>
       <%- if operation.parameters.any? { |p| p.location == 'path' } -%>
       path = '<%= api.path %>' % options
@@ -87,7 +90,6 @@ module Ari
       self.class.<%= operation.method_name %>(options.merge(<%= id_attribute_name %>: self.id, client: @client))
     end
     <%- end -%>
-
     <%- end -%>
     <%- end unless generate_only_models? -%>
 

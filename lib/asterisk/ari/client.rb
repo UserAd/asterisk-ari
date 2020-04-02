@@ -1,10 +1,12 @@
-require "asterisk/ari/client/version"
+# frozen_string_literal: true
 
-require "ari"
-require "ari/model"
-require "ari/resource"
-require "ari/list_resource"
+require 'asterisk/ari/client/version'
 
-require "ari/client"
-require "ari/resources"
-require "ari/models"
+require 'ari'
+require 'ari/model'
+require 'ari/resource'
+require 'ari/list_resource'
+
+require 'ari/client'
+require 'ari/resources'
+require 'ari/models'

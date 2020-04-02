@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ari/resources/application'
 require 'ari/resources/asterisk'
 require 'ari/resources/bridge'

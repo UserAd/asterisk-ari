@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,15 +13,11 @@
 
 module Ari
   class Event < Model
-
     attr_reader :application, :timestamp
 
     def timestamp=(val)
       @timestamp ||= Time.parse(val)
     end
-
-
-
   end
 end
 

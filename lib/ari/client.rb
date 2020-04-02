@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'multi_json'
 require 'ari/request_error'
@@ -28,7 +30,7 @@ module Ari
       @options = DEFAULTS.merge options
       @pool = ThreadPool.new @options[:pool_size]
       @uri = URI.parse @options[:url]
-      raise ArgumentError.new("The :api_key needs to be specified.") unless @options[:api_key]
+      raise ArgumentError.new('The :api_key needs to be specified.') unless @options[:api_key]
     end
 
     %w{ get put post delete }.each do |http_method|
@@ -122,6 +124,5 @@ module Ari
       @instance_listeners ||= {}
       @instance_listeners
     end
-
   end
 end

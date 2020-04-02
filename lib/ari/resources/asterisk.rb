@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,8 +13,6 @@
 
 module Ari
   class Asterisk < Resource
-
-
     # GET /asterisk/config/dynamic/%{configClass}/%{objectType}/%{id}
     #
     # Asterisk dynamic configuration
@@ -25,9 +25,9 @@ module Ari
     # id (required) - The unique identifier of the object to retrieve.
     #
     def self.get_object(options = {})
-      raise ArgumentError.new("Parameter configClass must be passed in options hash.") unless options[:configClass]
-      raise ArgumentError.new("Parameter objectType must be passed in options hash.") unless options[:objectType]
-      raise ArgumentError.new("Parameter id must be passed in options hash.") unless options[:id]
+      raise ArgumentError.new('Parameter configClass must be passed in options hash.') unless options[:configClass]
+      raise ArgumentError.new('Parameter objectType must be passed in options hash.') unless options[:objectType]
+      raise ArgumentError.new('Parameter id must be passed in options hash.') unless options[:id]
       path = '/asterisk/config/dynamic/%{configClass}/%{objectType}/%{id}' % options
       response = client(options).get(path, options)
       response.map { |hash| ConfigTuple.new(hash.merge(client: options[:client])) }
@@ -51,9 +51,9 @@ module Ari
     # fields  - The body object should have a value that is a list of ConfigTuples, which provide the fields to update. Ex. [ { "attribute": "directmedia", "value": "false" } ]
     #
     def self.update_object(options = {})
-      raise ArgumentError.new("Parameter configClass must be passed in options hash.") unless options[:configClass]
-      raise ArgumentError.new("Parameter objectType must be passed in options hash.") unless options[:objectType]
-      raise ArgumentError.new("Parameter id must be passed in options hash.") unless options[:id]
+      raise ArgumentError.new('Parameter configClass must be passed in options hash.') unless options[:configClass]
+      raise ArgumentError.new('Parameter objectType must be passed in options hash.') unless options[:objectType]
+      raise ArgumentError.new('Parameter id must be passed in options hash.') unless options[:id]
       path = '/asterisk/config/dynamic/%{configClass}/%{objectType}/%{id}' % options
       response = client(options).put(path, options)
       response.map { |hash| ConfigTuple.new(hash.merge(client: options[:client])) }
@@ -76,9 +76,9 @@ module Ari
     # id (required) - The unique identifier of the object to delete.
     #
     def self.delete_object(options = {})
-      raise ArgumentError.new("Parameter configClass must be passed in options hash.") unless options[:configClass]
-      raise ArgumentError.new("Parameter objectType must be passed in options hash.") unless options[:objectType]
-      raise ArgumentError.new("Parameter id must be passed in options hash.") unless options[:id]
+      raise ArgumentError.new('Parameter configClass must be passed in options hash.') unless options[:configClass]
+      raise ArgumentError.new('Parameter objectType must be passed in options hash.') unless options[:objectType]
+      raise ArgumentError.new('Parameter id must be passed in options hash.') unless options[:id]
       path = '/asterisk/config/dynamic/%{configClass}/%{objectType}/%{id}' % options
       response = client(options).delete(path, options)
     rescue Ari::RequestError => e
@@ -139,7 +139,7 @@ module Ari
     # moduleName (required) - Module's name
     #
     def self.get_module(options = {})
-      raise ArgumentError.new("Parameter moduleName must be passed in options hash.") unless options[:moduleName]
+      raise ArgumentError.new('Parameter moduleName must be passed in options hash.') unless options[:moduleName]
       path = '/asterisk/modules/%{moduleName}' % options
       response = client(options).get(path, options)
       Module.new(response.merge(client: options[:client]))
@@ -160,7 +160,7 @@ module Ari
     # moduleName (required) - Module's name
     #
     def self.load_module(options = {})
-      raise ArgumentError.new("Parameter moduleName must be passed in options hash.") unless options[:moduleName]
+      raise ArgumentError.new('Parameter moduleName must be passed in options hash.') unless options[:moduleName]
       path = '/asterisk/modules/%{moduleName}' % options
       response = client(options).post(path, options)
     end
@@ -180,7 +180,7 @@ module Ari
     # moduleName (required) - Module's name
     #
     def self.unload_module(options = {})
-      raise ArgumentError.new("Parameter moduleName must be passed in options hash.") unless options[:moduleName]
+      raise ArgumentError.new('Parameter moduleName must be passed in options hash.') unless options[:moduleName]
       path = '/asterisk/modules/%{moduleName}' % options
       response = client(options).delete(path, options)
     rescue Ari::RequestError => e
@@ -202,7 +202,7 @@ module Ari
     # moduleName (required) - Module's name
     #
     def self.reload_module(options = {})
-      raise ArgumentError.new("Parameter moduleName must be passed in options hash.") unless options[:moduleName]
+      raise ArgumentError.new('Parameter moduleName must be passed in options hash.') unless options[:moduleName]
       path = '/asterisk/modules/%{moduleName}' % options
       response = client(options).put(path, options)
     end
@@ -235,8 +235,8 @@ module Ari
     # configuration (required) - levels of the log channel
     #
     def self.add_log(options = {})
-      raise ArgumentError.new("Parameter logChannelName must be passed in options hash.") unless options[:logChannelName]
-      raise ArgumentError.new("Parameter configuration must be passed in options hash.") unless options[:configuration]
+      raise ArgumentError.new('Parameter logChannelName must be passed in options hash.') unless options[:logChannelName]
+      raise ArgumentError.new('Parameter configuration must be passed in options hash.') unless options[:configuration]
       path = '/asterisk/logging/%{logChannelName}' % options
       response = client(options).post(path, options)
     end
@@ -256,7 +256,7 @@ module Ari
     # logChannelName (required) - Log channels name
     #
     def self.delete_log(options = {})
-      raise ArgumentError.new("Parameter logChannelName must be passed in options hash.") unless options[:logChannelName]
+      raise ArgumentError.new('Parameter logChannelName must be passed in options hash.') unless options[:logChannelName]
       path = '/asterisk/logging/%{logChannelName}' % options
       response = client(options).delete(path, options)
     rescue Ari::RequestError => e
@@ -278,7 +278,7 @@ module Ari
     # logChannelName (required) - Log channel's name
     #
     def self.rotate_log(options = {})
-      raise ArgumentError.new("Parameter logChannelName must be passed in options hash.") unless options[:logChannelName]
+      raise ArgumentError.new('Parameter logChannelName must be passed in options hash.') unless options[:logChannelName]
       path = '/asterisk/logging/%{logChannelName}/rotate' % options
       response = client(options).put(path, options)
     end
@@ -298,7 +298,7 @@ module Ari
     # variable (required) - The variable to get
     #
     def self.get_global_var(options = {})
-      raise ArgumentError.new("Parameter variable must be passed in options hash.") unless options[:variable]
+      raise ArgumentError.new('Parameter variable must be passed in options hash.') unless options[:variable]
       path = '/asterisk/variable'
       response = client(options).get(path, options)
       Variable.new(response.merge(client: options[:client]))
@@ -316,13 +316,11 @@ module Ari
     # value  - The value to set the variable to
     #
     def self.set_global_var(options = {})
-      raise ArgumentError.new("Parameter variable must be passed in options hash.") unless options[:variable]
+      raise ArgumentError.new('Parameter variable must be passed in options hash.') unless options[:variable]
       path = '/asterisk/variable'
       response = client(options).post(path, options)
     end
     class << self; alias_method :setGlobalVar, :set_global_var; end
-
-
   end
 end
 

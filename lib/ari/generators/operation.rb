@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Ari
   module Generators
     class Operation
-
       def initialize(specification)
         @specification = specification
       end
@@ -37,7 +38,6 @@ module Ari
       def parameters
         @parameters ||= @specification['parameters'].map { |p| Parameter.new(p) } rescue []
       end
-
     end
   end
 end

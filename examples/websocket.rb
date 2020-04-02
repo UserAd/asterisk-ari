@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'asterisk-ari-client'
 
 Ari.client = Ari::Client.new(
@@ -7,7 +9,7 @@ Ari.client = Ari::Client.new(
 )
 
 @client.on :websocket_open do
-  puts "Connected !"
+  puts 'Connected !'
 end
 
 @client.on :websocket_error do |err|

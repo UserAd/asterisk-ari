@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,10 @@
 
 module Ari
   class ChannelCallerId < Event
-
     attr_reader :caller_presentation, :caller_presentation_txt, :channel
 
     def channel=(val)
       @channel ||= Channel.new(val)
     end
-
-
   end
 end

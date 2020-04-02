@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ari/models/build_info'
 require 'ari/models/system_info'
 require 'ari/models/set_id'
@@ -13,7 +15,6 @@ require 'ari/models/dialed'
 require 'ari/models/dialplan_cep'
 require 'ari/models/caller_id'
 require 'ari/models/rt_pstat'
-require 'ari/models/text_message_variable'
 require 'ari/models/text_message'
 require 'ari/models/message'
 require 'ari/models/missing_params'

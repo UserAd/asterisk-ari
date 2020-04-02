@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class ChannelUserevent < Event
-
     attr_reader :eventname, :channel, :bridge, :endpoint, :userevent
 
     def channel=(val)
@@ -29,7 +30,5 @@ module Ari
     def userevent=(val)
       @userevent ||= object.new(val)
     end
-
-
   end
 end

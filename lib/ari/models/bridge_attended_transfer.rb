@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class BridgeAttendedTransfer < Event
-
     attr_reader :transferer_first_leg, :transferer_second_leg, :replace_channel, :transferee, :transfer_target, :result, :is_external, :transferer_first_leg_bridge, :transferer_second_leg_bridge, :destination_type, :destination_bridge, :destination_application, :destination_link_first_leg, :destination_link_second_leg, :destination_threeway_channel, :destination_threeway_bridge
 
     def transferer_first_leg=(val)
@@ -57,7 +58,5 @@ module Ari
     def destination_threeway_bridge=(val)
       @destination_threeway_bridge ||= Bridge.new(val)
     end
-
-
   end
 end

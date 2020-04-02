@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../test_helper'
 
 class TestBridge < Minitest::Test
@@ -42,5 +44,4 @@ class TestBridge < Minitest::Test
       assert_equal 'simple_bridge', bridge.technology
     end
   end
-
 end

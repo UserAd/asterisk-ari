@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,13 +13,10 @@
 
 module Ari
   class ChannelDtmfReceived < Event
-
     attr_reader :digit, :duration_ms, :channel
 
     def channel=(val)
       @channel ||= Channel.new(val)
     end
-
-
   end
 end

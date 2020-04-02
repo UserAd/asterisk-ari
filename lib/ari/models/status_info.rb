@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #------------------------------------------------------------------------------
 #
 #  WARNING !
@@ -11,7 +13,6 @@
 
 module Ari
   class StatusInfo < Model
-
     attr_reader :startup_time, :last_reload_time
 
     def startup_time=(val)
@@ -21,7 +22,5 @@ module Ari
     def last_reload_time=(val)
       @last_reload_time ||= Time.parse(val)
     end
-
-
   end
 end
