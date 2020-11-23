@@ -16,7 +16,8 @@ module Ari
 
     DEFAULTS = {
       :url => 'http://localhost:8088/ari',
-      :pool_size => 10
+      :pool_size => 10,
+      :subscribe_all => false
     }
 
     HTTP_HEADERS = {
@@ -47,7 +48,7 @@ module Ari
     end
 
     def connect_websocket
-      params = { api_key: @options[:api_key], app: @options[:app] }
+      params = { api_key: @options[:api_key], app: @options[:app], subscribeAll: @options[:subscribe_all] }
       query_string = URI.encode_www_form params
       ws_url = "#{@uri}/events?#{query_string}"
       if @ws
