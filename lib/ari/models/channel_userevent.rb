@@ -11,6 +11,8 @@
 #
 #------------------------------------------------------------------------------
 
+require 'ostruct'
+
 module Ari
   class ChannelUserevent < Event
     attr_reader :eventname, :channel, :bridge, :endpoint, :userevent
@@ -28,7 +30,7 @@ module Ari
     end
 
     def userevent=(val)
-      @userevent ||= object.new(val)
+      @userevent ||= OpenStruct.new(val)
     end
   end
 end
